@@ -16,7 +16,7 @@ namespace ApiTest.Controllers
     {
         private readonly IBarriRepo _repository;
 
-        public IMapper _mapper { get; }
+        private readonly IMapper _mapper;
 
         public TrucksController( IBarriRepo repository , IMapper mapper)
         {
