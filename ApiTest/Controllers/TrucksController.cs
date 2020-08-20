@@ -5,6 +5,7 @@ using ApiTest.Dtos;
 using ApiTest.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.JsonPatch.Operations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -117,6 +118,58 @@ namespace ApiTest.Controllers
 
             return NoContent();
         }
+
+
+
+        // Patch api/truck/{id}/update_status
+        [HttpPatch("{id}/update_condition")]
+        public ActionResult<string> UpdateCondition(int id)
+        {
+
+            var truckModel = _repository.GetTruckById(id);
+            if (truckModel == null)
+            {
+                return NotFound();
+            }
+            var modelYear = Int32.Parse(truckModel.ModelYear);
+            var currentYear = DateTime.Now.Year;
+            var truckAge = currentYear - modelYear;
+            var condition = "New";
+            if (truckAge > 5)
+            {
+                condition = "Old";
+
+            }
+            else if (truckAge > 2) {
+                condition = "Average";
+            }
+            else
+            {
+                condition = "New";
+            }
+
+            var patchStatus = new JsonPatchDocument<TruckUpdateDto>();
+            patchStatus.Operations.Add(new Operation<TruckUpdateDto> { op = "replace", path = "/condition", value = condition });
+
+            var truckToPatch = _mapper.Map<TruckUpdateDto>(truckModel);
+            patchStatus.ApplyTo(truckToPatch, ModelState);
+
+            if (!TryValidateModel(truckToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(truckToPatch, truckModel);
+
+            _repository.UpdateTruck(truckModel); // does nothing
+
+            _repository.SaveChanges();
+
+            return Ok(_mapper.Map<TruckReadDto>(truckModel));
+
+            
+        }
+
         //Delete api/truck/{id}
         [HttpDelete("{id}")]
         public ActionResult DeleteTruck(int id)
@@ -132,6 +185,8 @@ namespace ApiTest.Controllers
             return Ok();
         }
     }
+
+
 
     
 }
