@@ -1,4 +1,6 @@
 ﻿using System;
+using ApiTest.Models;
+
 namespace ApiTest.Dtos
 {
     public class TruckReadDto
@@ -13,12 +15,16 @@ namespace ApiTest.Dtos
         public string Type { get; set; }
         
         public string PlateInfo { get; set; }
-        
-        
-        
+
+        public string Brand { get; set; }
+
         public string ModelYear { get; set; }
       
         public string Condition { get; set; }
+
+        
+        
+
 
     }
 }

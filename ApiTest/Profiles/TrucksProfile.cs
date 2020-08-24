@@ -16,6 +16,10 @@ namespace ApiTest.Profiles
             CreateMap<TruckUpdateDto, Truck>();
             CreateMap<Truck, TruckUpdateDto>(); // This is for the patch
 
+            CreateMap<ServiceProvider, ServiceProviderReadDto>();
+            CreateMap<ServiceProviderCreateDto, ServiceProvider>();
+            CreateMap<ServiceProviderUpdateDto, ServiceProvider>();
+            CreateMap<ServiceProvider, ServiceProviderUpdateDto>(); // This is for the patch
 
 
         }

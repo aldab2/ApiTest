@@ -14,6 +14,16 @@ namespace ApiTest.Data
         void UpdateTruck(Truck truck);
         void DeleteTruck(Truck truck);
 
+        IEnumerable<ServiceProvider> GetAllServiceProviders();
+        ServiceProvider GetServiceProviderById(int SPId);
+        void PostServiceProvider(ServiceProvider sp);
+        void UpdateServiceProvider(ServiceProvider sp);
+        void DeleteServiceProvider(ServiceProvider sp);
+
+
+
+        void SeedDatabase();
+
 
     }
 }

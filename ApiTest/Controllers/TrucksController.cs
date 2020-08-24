@@ -184,7 +184,18 @@ namespace ApiTest.Controllers
 
             return Ok();
         }
+
+        // POST api/trucks/seed_db
+        [HttpPost("seed_db")]
+        public ActionResult SeedDatabase()
+        {
+            _repository.SeedDatabase();
+
+            return Ok("DB Seeded");
+        }
     }
+
+   
 
 
 

@@ -24,5 +24,10 @@ namespace ApiTest.Models
         public string Condition { get; set; }
 
 
+        
+        public ServiceProvider ServiceProvider { get; set; }
+
+
+
     }
 }

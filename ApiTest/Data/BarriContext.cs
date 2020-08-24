@@ -11,8 +11,21 @@ namespace ApiTest.Data
         }
 
         public DbSet<Truck> Trucks { get; set; }
+        public DbSet<ServiceProvider> ServiceProviders { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ServiceProvider>()
+                .HasMany(sp => sp.Trucks)
+                .WithOne(t => t.ServiceProvider);
+
+        }
+
+        
 
 
 
     }
+
 }

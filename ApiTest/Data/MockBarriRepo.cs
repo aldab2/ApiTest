@@ -20,7 +20,17 @@ namespace ApiTest.Data
         };
         }
 
+        public void DeleteServiceProvider(ServiceProvider sp)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteTruck(Truck truck)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ServiceProvider> GetAllServiceProviders()
         {
             throw new NotImplementedException();
         }
@@ -31,9 +41,19 @@ namespace ApiTest.Data
             return _data;
         }
 
+        public ServiceProvider GetServiceProviderById(int SPId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Truck GetTruckById(int TruckId)
         {
             return _data.Find(t => t.TruckId == TruckId);
+        }
+
+        public void PostServiceProvider(ServiceProvider sp)
+        {
+            throw new NotImplementedException();
         }
 
         public void PostTruck(Truck truck)
@@ -42,6 +62,16 @@ namespace ApiTest.Data
         }
 
         public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SeedDatabase()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateServiceProvider(ServiceProvider sp)
         {
             throw new NotImplementedException();
         }
